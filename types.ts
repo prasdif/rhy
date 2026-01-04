@@ -1,4 +1,3 @@
-
 import { LucideIcon } from 'lucide-react';
 
 export interface Project {
@@ -18,15 +17,6 @@ export interface Experience {
   period: string;
   description: string;
   technologies: string[];
-}
-
-// Add Education interface to resolve import error in Education component
-export interface Education {
-  id: string;
-  institution: string;
-  degree: string;
-  period: string;
-  description?: string;
 }
 
 export interface Skill {

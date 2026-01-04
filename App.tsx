@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
@@ -9,8 +8,6 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Services from './components/Services';
 import AIChat from './components/AIChat';
-// Import Education component to display it in the portfolio
-import Education from './components/Education';
 
 function App() {
   return (
@@ -19,8 +16,6 @@ function App() {
       <About />
       <Services />
       <Experience />
-      {/* Add Education section to the portfolio */}
-      <Education />
       <Projects />
       <Skills />
       <Contact />

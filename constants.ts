@@ -1,6 +1,5 @@
-
 import { Code, Server, Database, Layout, Layers, Terminal, GitBranch, Github, Figma, FileCode, Zap, ShieldCheck } from 'lucide-react';
-import { Experience, Project, Skill, Service, Education } from './types';
+import { Experience, Project, Skill, Service } from './types';
 
 export const PROFILE = {
   name: "Prasad",
@@ -91,25 +90,13 @@ export const EXPERIENCES: Experience[] = [
   }
 ];
 
-// Add EDUCATION constant to fix the export error in Education.tsx
-export const EDUCATION: Education[] = [
-  {
-    id: '1',
-    institution: 'University of Computer Science',
-    degree: 'Bachelor of Science in Software Engineering',
-    period: '2019 - 2023',
-    description: 'Specialized in full-stack development and artificial intelligence integration.'
-  }
-];
-
 export const SYSTEM_INSTRUCTION = `You are an AI assistant for ${PROFILE.name}'s portfolio website. 
-Your goal is to answer questions about ${PROFILE.name}'s skills, experience, projects, and education.
+Your goal is to answer questions about ${PROFILE.name}'s skills, experience, and projects.
 
 Key Context:
 - Profile: ${JSON.stringify(PROFILE)}
 - Tech Stack: JavaScript, Express, React, Tailwind, Vite, Supabase
 - Projects: ${JSON.stringify(PROJECTS)} (Highlight "Hashflow" as a premier AI Instagram tool and "Custom AI Chatbot" for customer support automation)
 - Skills: ${JSON.stringify(SKILLS)}
-- Education: ${JSON.stringify(EDUCATION)}
 
 Tone: Professional, concise, and helpful. Use lowercase for a modern minimalist feel where appropriate.`;
