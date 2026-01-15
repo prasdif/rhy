@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { PROFILE } from '../constants';
@@ -34,41 +35,26 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 min-h-[40vh] justify-center">
+    <section id="hero" className="flex flex-col items-center justify-center min-h-[30vh] py-12 text-center">
       <motion.div 
-        className="flex-1 text-center md:text-left"
+        className="flex-1"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl md:text-6xl font-bold tracking-tight text-primary mb-2"
+          className="text-5xl md:text-7xl font-bold tracking-tight text-primary mb-4"
         >
           hi, I'm {PROFILE.name.split(' ')[0].toLowerCase()}
         </motion.h1>
         
         <motion.p 
           variants={itemVariants}
-          className="text-sm md:text-base text-secondary font-mono"
+          className="text-sm md:text-lg text-secondary font-mono"
         >
           been here for {age} years
         </motion.p>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 0.8, type: "spring", delay: 0.2 }}
-        className="w-32 h-32 md:w-40 md:h-40 relative group"
-      >
-        <div className="absolute inset-0 bg-black rounded-full overflow-hidden border-2 border-neutral-800 group-hover:border-neutral-600 transition-colors">
-          <img 
-            src="https://res.cloudinary.com/dztmp3saa/image/upload/v1764411799/05fa065bfe2361a83fc8e7891088bb35_serlz6.jpg" 
-            alt="Profile"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          />
-        </div>
       </motion.div>
     </section>
   );

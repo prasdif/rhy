@@ -4,8 +4,6 @@ import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
-const BOT_AVATAR = "https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Prasad&backgroundColor=b6e3f4,c0aede,d1d4f9";
-
 const AIChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -78,8 +76,8 @@ const AIChat: React.FC = () => {
             {/* Header */}
             <div className="p-3 flex items-center justify-between border-b border-neutral-800 bg-neutral-900/50">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full overflow-hidden bg-neutral-800">
-                  <img src={BOT_AVATAR} alt="Bot" className="w-full h-full object-cover" />
+                <div className="w-6 h-6 rounded-full flex items-center justify-center bg-neutral-800">
+                  <Sparkles className="w-3 h-3 text-accent" />
                 </div>
                 <span className="font-mono text-xs text-neutral-400">assistant</span>
               </div>
@@ -99,8 +97,8 @@ const AIChat: React.FC = () => {
                   className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                 >
                   {msg.role === 'model' && (
-                    <div className="w-6 h-6 rounded-full overflow-hidden bg-neutral-800 shrink-0 mt-1 border border-neutral-800">
-                       <img src={BOT_AVATAR} alt="Bot" className="w-full h-full object-cover" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center bg-neutral-800 shrink-0 mt-1 border border-neutral-800">
+                       <Sparkles className="w-3 h-3 text-accent" />
                     </div>
                   )}
                   <div className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${
@@ -114,8 +112,8 @@ const AIChat: React.FC = () => {
               ))}
               {isLoading && (
                  <div className="flex items-center gap-2 px-1">
-                    <div className="w-6 h-6 rounded-full overflow-hidden bg-neutral-800 shrink-0 border border-neutral-800">
-                       <img src={BOT_AVATAR} alt="Bot" className="w-full h-full object-cover grayscale opacity-50" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center bg-neutral-800 shrink-0 border border-neutral-800">
+                       <Sparkles className="w-3 h-3 text-accent/50 animate-pulse" />
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-1 h-1 bg-neutral-600 rounded-full animate-bounce" />
@@ -162,7 +160,7 @@ const AIChat: React.FC = () => {
         {isOpen ? (
           <X className="w-5 h-5 text-white" />
         ) : (
-          <img src={BOT_AVATAR} alt="AI" className="w-8 h-8 object-cover" />
+          <MessageSquare className="w-5 h-5 text-white" />
         )}
       </motion.button>
     </div>

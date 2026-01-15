@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     title: 'Custom AI Chatbot',
     description: 'Transform Customer Support with Autonomous AI. Built to handle complex queries and improve response times.',
     tags: ['Next.js', 'OpenAI', 'JavaScript', 'Tailwind'],
-    imageUrl: 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Prasad&backgroundColor=b6e3f4,c0aede,d1d4f9',
+    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=800&auto=format&fit=crop',
     link: 'https://custom-ai-chatbot-ezb2.vercel.app/',
     github: '#'
   }
