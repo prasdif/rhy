@@ -7,7 +7,6 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import About from './components/About';
 import Services from './components/Services';
-import AIChat from './components/AIChat';
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
       <Projects />
       <Skills />
       <Contact />
-      <AIChat />
     </Layout>
   );
 }

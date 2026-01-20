@@ -1,3 +1,4 @@
+
 import { Code, Server, Database, Layout, Layers, Terminal, GitBranch, Github, Figma, FileCode, Zap, ShieldCheck } from 'lucide-react';
 import { Experience, Project, Skill, Service } from './types';
 
@@ -90,13 +91,19 @@ export const EXPERIENCES: Experience[] = [
   }
 ];
 
-export const SYSTEM_INSTRUCTION = `You are an AI assistant for ${PROFILE.name}'s portfolio website. 
-Your goal is to answer questions about ${PROFILE.name}'s skills, experience, and projects.
+// Added SYSTEM_INSTRUCTION to define AI assistant behavior and context
+export const SYSTEM_INSTRUCTION = `You are an AI assistant for Prasad's portfolio website. 
+Prasad is a ${PROFILE.role} based in ${PROFILE.location}. 
 
-Key Context:
-- Profile: ${JSON.stringify(PROFILE)}
-- Tech Stack: JavaScript, Express, React, Tailwind, Vite, Supabase
-- Projects: ${JSON.stringify(PROJECTS)}
-- Skills: ${JSON.stringify(SKILLS)}
+Context about Prasad:
+- Bio: ${PROFILE.bio}
+- Skills: ${SKILLS.map(s => s.name).join(', ')}
+- Projects: ${PROJECTS.map(p => `${p.title}: ${p.description}`).join('; ')}
+- Experience: ${EXPERIENCES.map(e => `${e.role} at ${e.company} (${e.period})`).join('; ')}
+- Services: ${SERVICES.map(s => s.title).join(', ')}
 
-Tone: Professional, concise, and helpful. Use lowercase for a modern minimalist feel where appropriate.`;
+Instructions:
+- Answer questions about Prasad's work, skills, and background.
+- Be helpful, concise, and professional.
+- Use a friendly tone.
+- Reply in lowercase where appropriate to match the portfolio's aesthetic.`;
