@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     title: 'Chatify',
     description: 'A real-time multi-channel messaging dashboard built for high-performance team collaboration.',
     tags: ['React', 'Firebase', 'Tailwind', 'Real-time'],
-    imageUrl: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=200&auto=format&fit=crop',
     link: 'https://chatify-49.web.app/',
     github: '#'
   },
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     title: 'Hashflow',
     description: 'An AI-powered tool that generates optimized hashtags and suggests peak posting times for Instagram engagement.',
     tags: ['Vite', 'JavaScript', 'Supabase', 'OpenAI'],
-    imageUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=200&auto=format&fit=crop',
     link: 'https://www.hashflow.in/',
     github: '#'
   },
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     title: 'Custom AI Chatbot',
     description: 'Transform Customer Support with Autonomous AI. Built to handle complex queries and improve response times.',
     tags: ['Next.js', 'OpenAI', 'JavaScript', 'Tailwind'],
-    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=200&auto=format&fit=crop',
     link: 'https://custom-ai-chatbot-ezb2.vercel.app/',
     github: '#'
   }
@@ -96,7 +96,7 @@ Your goal is to answer questions about ${PROFILE.name}'s skills, experience, and
 Key Context:
 - Profile: ${JSON.stringify(PROFILE)}
 - Tech Stack: JavaScript, Express, React, Tailwind, Vite, Supabase
-- Projects: ${JSON.stringify(PROJECTS)} (Highlight "Hashflow" as a premier AI Instagram tool and "Custom AI Chatbot" for customer support automation)
+- Projects: ${JSON.stringify(PROJECTS)}
 - Skills: ${JSON.stringify(SKILLS)}
 
 Tone: Professional, concise, and helpful. Use lowercase for a modern minimalist feel where appropriate.`;

@@ -30,7 +30,8 @@ const About: React.FC = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.h2 variants={itemVariants} className="text-xl font-bold text-primary mb-6">about</motion.h2>
+        <motion.h2 variants={itemVariants} className="text-xl font-bold text-primary mb-8">about</motion.h2>
+        
         <div className="space-y-4 text-secondary text-sm md:text-base leading-relaxed">
            {PROFILE.bio.split('\n').map((paragraph, index) => (
              <motion.p key={index} variants={itemVariants}>

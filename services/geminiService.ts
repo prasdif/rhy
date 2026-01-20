@@ -3,16 +3,10 @@ import { SYSTEM_INSTRUCTION } from "../constants";
 
 export const sendMessageToGemini = async (message: string): Promise<string> => {
   try {
-    // Access the API key exclusively from process.env as per requirements
     const apiKey = process.env.API_KEY;
 
-    // Defensive check for production environments (Vercel)
-    if (!apiKey) {
-      console.error("Gemini API Key is missing. Please check your Vercel/environment variables.");
-      return "i'm sorry, my ai component is currently offline (missing configuration).";
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
+    // We proceed and let the SDK handle key issues, or the UI handle selection via window.aistudio
+    const ai = new GoogleGenAI({ apiKey: apiKey || "" });
     const model = "gemini-3-flash-preview";
 
     const response = await ai.models.generateContent({
@@ -24,15 +18,14 @@ export const sendMessageToGemini = async (message: string): Promise<string> => {
       }
     });
 
-    // Access text property directly
     return response.text || "i'm sorry, i couldn't generate a response at the moment.";
-  } catch (error) {
-    console.error("Error communicating with Gemini:", error);
+  } catch (error: any) {
+    console.error("Gemini API Error:", error);
     
-    // More specific error message for common API issues
-    const errorMessage = error instanceof Error ? error.message : "";
-    if (errorMessage.toLowerCase().includes("api key")) {
-      return "it seems there is an issue with my access credentials. please verify the api key.";
+    const msg = error?.message || "";
+    // Check for common key-related errors that occur in sandboxed live environments
+    if (msg.includes("API_KEY_INVALID") || msg.includes("API key not found") || msg.includes("403")) {
+      return "NEED_KEY_SELECTION";
     }
     
     return "i'm currently having trouble connecting to my brain. please try again later.";

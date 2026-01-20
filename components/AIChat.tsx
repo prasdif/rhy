@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send, Sparkles, Key } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
@@ -42,13 +42,24 @@ const AIChat: React.FC = () => {
 
     try {
       const responseText = await sendMessageToGemini(userMsg.text);
-      const botMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        role: 'model',
-        text: responseText.toLowerCase(),
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botMsg]);
+      
+      if (responseText === "NEED_KEY_SELECTION") {
+        const botMsg: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          role: 'model',
+          text: "it seems i need a valid api key to work in this environment. please connect one using the button below.",
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMsg]);
+      } else {
+        const botMsg: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          role: 'model',
+          text: responseText.toLowerCase(),
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMsg]);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -60,6 +71,26 @@ const AIChat: React.FC = () => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
+    }
+  };
+
+  const handleConnectKey = async () => {
+    try {
+      // @ts-ignore - Handle specific AISTUDIO live environment tool
+      if (window.aistudio && window.aistudio.openSelectKey) {
+        // @ts-ignore
+        await window.aistudio.openSelectKey();
+        setMessages(prev => [...prev, {
+          id: 'key-connected',
+          role: 'model',
+          text: "key connected. you can now try asking your question again!",
+          timestamp: new Date()
+        }]);
+      } else {
+        alert("api key selection is not supported in this environment. please ensure process.env.API_KEY is configured.");
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -107,6 +138,15 @@ const AIChat: React.FC = () => {
                       : 'bg-transparent border border-neutral-800 text-neutral-300'
                   }`}>
                     {msg.text}
+                    {msg.text.includes("connect one using the button below") && (
+                       <button 
+                         onClick={handleConnectKey}
+                         className="mt-2 w-full flex items-center justify-center gap-2 py-1.5 bg-accent/20 hover:bg-accent/30 border border-accent/40 rounded-lg text-xs text-accent transition-all"
+                       >
+                         <Key size={12} />
+                         connect api key
+                       </button>
+                    )}
                   </div>
                 </div>
               ))}
